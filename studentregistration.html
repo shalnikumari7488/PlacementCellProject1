@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student Registration | Placement Portal</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI", Arial, sans-serif;
+}
+html,body{
+    height:100%;
+}
+
+/* ===== BACKGROUND ===== */
+body{
+    background:url("bg6.jpg") no-repeat center center/cover;
+    background-attachment: fixed;
+}
+
+/* ===== HEADER ===== */
+.header{
+    background:rgba(44,47,90,0.95);
+    display:flex;
+    align-items:center;
+    padding:14px 40px;
+}
+.logo img{
+    width:55px;
+}
+.title{
+    margin-left:15px;
+}
+.title h1{
+    color:#fff;
+    font-size:24px;
+}
+.title p{
+    color:#dcdcff;
+    font-size:14px;
+}
+
+/* NAVIGATION */
+.nav{
+    margin-left:auto;
+}
+.nav a{
+    color:#fff;
+    text-decoration:none;
+    margin-left:18px;
+    font-size:14px;
+    font-weight:600;
+}
+.nav a:hover{
+    color:#ffdf6c;
+}
+
+/* ===== MAIN ===== */
+.main{
+    min-height:calc(100vh - 90px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+/* REGISTRATION BOX */
+.reg-box{
+    background:rgba(255,255,255,0.97);
+    padding:30px 35px;
+    width:100%;
+    max-width:420px;
+    border-radius:14px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.25);
+}
+.reg-box h2{
+    text-align:center;
+    color:#2c2f5a;
+    margin-bottom:22px;
+    font-size:24px;
+}
+.reg-box label{
+    font-size:14px;
+    color:#333;
+}
+.reg-box input, .reg-box select{
+    width:100%;
+    padding:10px;
+    margin:8px 0 18px 0;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:14px;
+}
+.reg-box button{
+    width:100%;
+    padding:11px;
+    background:#5a5fcf;
+    border:none;
+    color:#fff;
+    font-size:15px;
+    font-weight:600;
+    border-radius:6px;
+    cursor:pointer;
+}
+.reg-box button:hover{
+    background:#3f44b5;
+}
+.note{
+    margin-top:16px;
+    font-size:13px;
+    text-align:center;
+    color:#555;
+}
+.note a{
+    color:#5a5fcf;
+    text-decoration:none;
+    font-weight:600;
+}
+
+/* ===== FOOTER ===== */
+.footer{
+    width:100%;
+    text-align:center;
+    padding:10px;
+    font-size:13px;
+    background:rgba(255,255,255,0.85);
+    color:#444;
+    position:relative;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:480px){
+    .header{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+    .nav{
+        margin-left:0;
+        margin-top:10px;
+        display:flex;
+        flex-wrap:wrap;
+    }
+    .nav a{
+        margin:5px 10px 0 0;
+    }
+    .reg-box{
+        padding:25px 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+    <div class="logo">
+        <img src="logo.jpg" alt="Ranchi Women's College Logo">
+    </div>
+
+    <div class="title">
+        <h1>Ranchi Women's College</h1>
+        <p>Placement Cell Management System</p>
+    </div>
+
+    <div class="nav">
+        <a href="front.html">Home</a>
+        <a href="studentlogin.html">Student Login</a>
+        <a href="companylogin.html">Company Login</a>
+        <a href="studentregistration.html">Registration</a>
+        <a href="adminlogin.html">Admin</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</div>
+
+<!-- ===== MAIN ===== -->
+<div class="main">
+    <div class="reg-box">
+        <h2>Student Registration</h2>
+
+        <form name="frm" method="post" action="studentregistration.php" enctype="multipart/form-data">
+            <label>Full Name</label>
+            <input type="text" name="nm1" placeholder="Enter full name" required>
+
+            <label>Roll Number</label>
+            <input type="text" name="nm2" placeholder="Enter roll number" required>
+
+            <label>Email</label>
+            <input type="email" name="nm3" placeholder="Enter email address" required>
+
+            <label>Password</label>
+            <input type="password" name="nm4" placeholder="Create password" required>
+
+            <label>Department</label>
+            <select name="nm5" required>
+                <option value="">Select Department</option>
+                <option value="BSC-CA">BSC-CA</option>
+                <option value="BSC-CS">BSC-IT</option>
+                <option value="BSC-MATH">BSC-MATH</option>
+            </select>
+
+            <label>Phone Number</label>
+            <input type="text" name="nm6" placeholder="Enter contact number" required>
+
+            <label>city</label>
+            <input type="text" name="nm7" placeholder="Enter city" required>
+
+            <label>state</label>
+            <input type="text" name="nm8" placeholder="Enter state" required>
+
+            <label>Upload Photo</label>
+            <input type="file" name="nm9" placeholder="uploadphoto" required>
+
+
+            <button type="submit">Register</button>
+        </form>
+
+        <div class="note">
+            Already registered? <a href="studentlogin.html">Login here</a>
+        </div>
+    </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<div class="footer">
+    © 2025 Ranchi Women’s College | Placement Cell
+</div>
+
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Apply For Job | Placement Portal</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI", Arial, sans-serif;
+}
+
+/* ===== BACKGROUND ===== */
+body{
+    background:url("bg1.jpg") no-repeat center center/cover;
+    background-attachment:fixed;
+}
+
+/* ===== HEADER (SAME AS PROJECT) ===== */
+.header{
+    background:rgba(44,47,90,0.95);
+    display:flex;
+    align-items:center;
+    padding:14px 40px;
+}
+.logo img{
+    width:55px;
+}
+.title{
+    margin-left:15px;
+}
+.title h1{
+    color:#fff;
+    font-size:24px;
+}
+.title p{
+    color:#dcdcff;
+    font-size:14px;
+}
+.nav{
+    margin-left:auto;
+}
+.nav a{
+    color:#fff;
+    text-decoration:none;
+    margin-left:18px;
+    font-size:14px;
+    font-weight:600;
+}
+.nav a:hover{
+    color:#ffdf6c;
+}
+
+/* ===== MAIN ===== */
+.main{
+    min-height:calc(100vh - 90px);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:40px;
+}
+
+/* ===== FORM BOX ===== */
+.form-box{
+    background:#ffffff;
+    padding:30px 35px;
+    width:100%;
+    max-width:520px;
+    border-radius:14px;
+    box-shadow:0 12px 30px rgba(0,0,0,0.3);
+}
+
+.form-box h1{
+    text-align:center;
+    color:#2c2f5a;
+    margin-bottom:25px;
+}
+
+/* ===== TABLE FORM ===== */
+table{
+    width:100%;
+}
+td{
+    padding:8px 5px;
+    font-size:14px;
+    color:#333;
+}
+input{
+    width:100%;
+    padding:9px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:14px;
+}
+
+/* ===== BUTTON ===== */
+.btn{
+    width:100%;
+    padding:11px;
+    margin-top:15px;
+    border:none;
+    border-radius:6px;
+    background:#5a5fcf;
+    color:#fff;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+}
+.btn:hover{
+    background:#3f44b5;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:600px){
+    .form-box{
+        padding:25px 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== HEADER ===== -->
+<div class="header">
+    <div class="logo">
+        <img src="logo.jpg">
+    </div>
+
+    <div class="title">
+        <h1>Ranchi Women's College</h1>
+        <p>Placement Cell Management System</p>
+    </div>
+
+    <div class="nav">
+        <a href="frontpage.html">Home</a>
+        <a href="studentlogin.html">Student Login</a>
+        <a href="companylogin.html">Company Login</a>
+        <a href="registration.html">Registration</a>
+        <a href="adminlogin.html">Admin</a>
+        <a href="contact.html">Contact</a>
+    </div>
+</div>
+
+<!-- ===== MAIN ===== -->
+<div class="main">
+
+<div class="form-box">
+<h1>Apply For Job</h1>
+
+<form action="applyjob.php" method="post">
+<table>
+<tr><td>Application ID</td><td><input type="text" name="nm1"></td></tr>
+<tr><td>Student Email</td><td><input type="email" name="nm2"></td></tr>
+<tr><td>Student Name</td><td><input type="text" name="nm3"></td></tr>
+<tr><td>Company ID</td><td><input type="text" name="nm4"></td></tr>
+<tr><td>Company Name</td><td><input type="text" name="nm5"></td></tr>
+<tr><td>Job Role</td><td><input type="text" name="nm6"></td></tr>
+<tr><td>Apply Date</td><td><input type="date" name="nm7"></td></tr>
+<tr><td>Status</td><td><input type="text" name="nm8" value="Pending"></td></tr>
+</table>
+
+<input type="submit" value="Submit Application" class="btn">
+</form>
+</div>
+
+</div>
+
+</body>
+</html>

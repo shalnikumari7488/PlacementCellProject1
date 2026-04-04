@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ranchi Women's College | Placement Portal</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Segoe UI", Arial, sans-serif;
+}
+
+html,body{
+height:100%;
+}
+
+.page{
+height:100vh;
+display:flex;
+flex-direction:column;
+}
+
+/* ===== HEADER ===== */
+
+.header{
+background:#2c2f5a;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:14px 40px;
+}
+
+.logo img{
+width:55px;
+}
+
+.title{
+margin-left:15px;
+}
+
+.title h1{
+color:#fff;
+font-size:24px;
+}
+
+.title p{
+color:#dcdcff;
+font-size:14px;
+}
+
+/* NAVBAR */
+
+.nav{
+display:flex;
+align-items:center;
+}
+
+.nav a{
+color:#ffffff;
+text-decoration:none;
+margin-left:20px;
+font-size:14px;
+font-weight:600;
+}
+
+.nav a:hover{
+color:#ffdf6c;
+}
+
+/* DROPDOWN */
+
+.dropdown{
+position:relative;
+}
+
+.dropdown-content{
+display:none;
+position:absolute;
+top:30px;
+right:0;
+background:#ffffff;
+min-width:190px;
+box-shadow:0 6px 14px rgba(0,0,0,0.2);
+border-radius:6px;
+}
+
+.dropdown-content a{
+color:#2c2f5a;
+padding:10px 14px;
+display:block;
+}
+
+.dropdown-content a:hover{
+background:#eef0ff;
+}
+
+.dropdown:hover .dropdown-content{
+display:block;
+}
+
+/* ===== MAIN ===== */
+
+.main{
+flex:1;
+background:url('bg5.jpg') center/cover no-repeat;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
+
+/* ===== TITLE ===== */
+
+.main h2{
+font-size:56px;
+font-weight:700;
+color:#ffffff;
+letter-spacing:1.5px;
+text-transform:capitalize;
+max-width:700px;
+line-height:1.25;
+
+text-shadow:
+0 4px 10px rgba(0,0,0,0.6),
+0 2px 4px rgba(0,0,0,0.5);
+}
+
+.main h2 span{
+color:#ffdf6c;
+}
+
+/* ===== FOOTER ===== */
+
+.footer{
+text-align:center;
+padding:10px;
+font-size:13px;
+background:#fafafa;
+color:#666;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+<!-- HEADER -->
+
+<div class="header">
+
+<div style="display:flex; align-items:center;">
+<div class="logo">
+<img src="logo.jpg" alt="Ranchi Women's College Logo">
+</div>
+
+<div class="title">
+<h1>Ranchi Women's College</h1>
+<p>Placement Cell Management System</p>
+</div>
+</div>
+
+<div class="nav">
+<a href="front.html">Home</a>
+<a href="studentlogin.html">Student Login</a>
+<a href="companylogin.html">Company Login</a>
+<a href="adminlogin.html">Admin Login</a>
+
+<div class="dropdown">
+<a href="registration.html">Registration</a>
+
+<div class="dropdown-content">
+<a href="studentregistration.html">Student Registration</a>
+<a href="companyregistration.html">Company Registration</a>
+</div>
+</div>
+
+<a href="contact.html">Contact</a>
+
+</div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main">
+<h2>Welcome to <span>Placement Portal</span></h2>
+</div>
+
+<!-- FOOTER -->
+
+<div class="footer">
+© 2025 Ranchi Women’s College | Placement Cell
+</div>
+
+</div>
+
+</body>
+</html>
