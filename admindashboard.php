@@ -211,12 +211,6 @@ body{
                 <span>View Placement Reports</span>
                 <a href="#">View</a>
             </div>
-
-            <div class="row">
-                <span>Post Notices / Announcements</span>
-                <a href="#">Post</a>
-            </div>
-
             
 
         </div>
