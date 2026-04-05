@@ -132,7 +132,7 @@ body{
 
 <div class="profile">
     <div class="profile-header">
-        Student Profile
+        Company Profile
     </div>
 
     <div class="profile-body">

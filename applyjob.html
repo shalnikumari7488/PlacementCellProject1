@@ -150,16 +150,20 @@ input{
 <div class="form-box">
 <h1>Apply For Job</h1>
 
-<form action="applyjob.php" method="post">
+<form action="applyjob.php" method="post" enctype="multipart/form-data">
 <table>
 <tr><td>Application ID</td><td><input type="text" name="nm1"></td></tr>
 <tr><td>Student Email</td><td><input type="email" name="nm2"></td></tr>
 <tr><td>Student Name</td><td><input type="text" name="nm3"></td></tr>
 <tr><td>Company ID</td><td><input type="text" name="nm4"></td></tr>
-<tr><td>Company Name</td><td><input type="text" name="nm5"></td></tr>
+<tr><td>Company Email</td><td><input type="text" name="nm5"></td></tr>
 <tr><td>Job Role</td><td><input type="text" name="nm6"></td></tr>
+<tr>
+    <td>Upload Resume</td>
+    <td><input type="file" name="resume" required></td>
+</tr>
 <tr><td>Apply Date</td><td><input type="date" name="nm7"></td></tr>
-<tr><td>Status</td><td><input type="text" name="nm8" value="Pending"></td></tr>
+<tr><td></td><td><input type="hidden" name="nm8" value="Pending"></td></tr>
 </table>
 
 <input type="submit" value="Submit Application" class="btn">

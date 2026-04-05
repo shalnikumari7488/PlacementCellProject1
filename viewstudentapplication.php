@@ -143,6 +143,7 @@ tr:hover{
                 <th>Company ID</th>
                 <th>Company Email</th>
                 <th>Job Role</th>
+                <th>Resume</th>
                 <th>Apply Date</th>
                 
                 <th>Status</th>
@@ -156,10 +157,16 @@ tr:hover{
                 <td><?php echo $di[1]; ?></td>
                 <td><?php echo $di[2]; ?></td>
                 <td><?php echo $di[3]; ?></td>
+                
                 <td><?php echo $di[4]; ?></td>
                 <td><?php echo $di[5]; ?></td>
-                <td><?php echo $di[6]; ?></td>
-<td><?php echo $di[7]; ?></td>
+                <td>
+    <a href="uploads/<?php echo $di[6]; ?>" target="_blank">
+        View Resume
+    </a>
+</td>
+                <td><?php echo $di[7]; ?></td>
+                 <td><?php echo $di[8]; ?></td>
 
                 
             </tr>

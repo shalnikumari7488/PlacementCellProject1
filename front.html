@@ -18,7 +18,7 @@ height:100%;
 }
 
 .page{
-height:100vh;
+min-height:100vh;
 display:flex;
 flex-direction:column;
 }
@@ -101,18 +101,19 @@ background:#eef0ff;
 display:block;
 }
 
-/* ===== MAIN ===== */
+/* ===== MAIN (🔥 FIXED FULL SCREEN) ===== */
 
 .main{
-flex:1;
+height:calc(100vh - 80px);  /* 🔥 full screen under header */
 background:url('bg5.jpg') center/cover no-repeat;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
+padding:40px;
 }
 
-/* ===== TITLE ===== */
+/* TITLE */
 
 .main h2{
 font-size:56px;
@@ -120,7 +121,7 @@ font-weight:700;
 color:#ffffff;
 letter-spacing:1.5px;
 text-transform:capitalize;
-max-width:700px;
+max-width:1000px;   /* 🔥 width improved */
 line-height:1.25;
 
 text-shadow:
@@ -130,6 +131,130 @@ text-shadow:
 
 .main h2 span{
 color:#ffdf6c;
+}
+
+/* ===== HERO SECTION ===== */
+
+.hero {
+  display: flex;
+  padding: 50px;
+  gap: 40px;
+  align-items: center;
+  background:#f8f8f8;
+}
+
+/* LEFT SIDE */
+.left {
+  position: relative;
+  width: 50%;
+  height: 500px;
+}
+
+.main-img {
+  width: 500px;
+  border-radius: 20px;
+  position: absolute;
+  top: 50px;
+  left: 150px;
+  object-fit: cover;
+}
+
+.small-img {
+  width: 220px;
+  border-radius: 15px;
+  position: absolute;
+  object-fit: cover;
+}
+
+.small-img.top {
+  top: 120px;
+  left: 0;
+}
+
+.small-img.bottom {
+  bottom: 0;
+  left: 50px;
+}
+
+.circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6c63ff, #8a7dff);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  font-size: 12px;
+  padding: 10px;
+}
+
+.experience {
+  position: absolute;
+  bottom: 20px;
+  left: 250px;
+  background: #c6f36d;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.experience h2 {
+  margin: 0;
+  font-size: 28px;
+}
+
+/* RIGHT SIDE */
+.right {
+  width: 50%;
+}
+
+.right h1 {
+  font-size: 42px;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.right h1 span {
+  color: #6c63ff;
+}
+
+.desc {
+  color: #555;
+  margin: 20px 0;
+  line-height: 1.6;
+}
+
+.feature {
+  display: flex;
+  gap: 15px;
+  margin: 20px 0;
+  align-items: flex-start;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  background: #eee;
+  border-radius: 10px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 12px 22px;
+  border: none;
+  background: #6c63ff;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background: #574fd6;
 }
 
 /* ===== FOOTER ===== */
@@ -155,7 +280,7 @@ color:#666;
 
 <div style="display:flex; align-items:center;">
 <div class="logo">
-<img src="logo.jpg" alt="Ranchi Women's College Logo">
+<img src="logo.jpg">
 </div>
 
 <div class="title">
@@ -185,16 +310,67 @@ color:#666;
 
 </div>
 
-<!-- MAIN -->
+<!-- MAIN (FULL SCREEN IMAGE) -->
 
 <div class="main">
 <h2>Welcome to <span>Placement Portal</span></h2>
 </div>
 
+<!-- HERO SECTION (STARTS AFTER IMAGE) -->
+
+<section class="hero">
+
+<div class="left">
+<div class="circle">Shape Your Career Path</div>
+<img src="bg2.jpg" class="main-img">
+<img src="bg3.jpg" class="small-img top">
+<img src="bg4.jpg" class="small-img bottom">
+
+<div class="experience">
+<h2>25</h2>
+<p>Years of Placement Excellence</p>
+</div>
+</div>
+
+<div class="right">
+
+<h1>
+Empowering students with
+<span>career & placement opportunities</span>
+</h1>
+
+<p class="desc">
+Our College Placement Portal connects students with top companies and recruiters. 
+We streamline the entire placement process by providing real-time job updates, 
+internship opportunities, and campus recruitment drives to help students build successful careers.
+</p>
+
+<div class="feature">
+<div class="icon"></div>
+<div>
+<h3>Campus Recruitment & Training</h3>
+<p>Prepare students with aptitude training, mock interviews, and resume building sessions.</p>
+</div>
+</div>
+
+<div class="feature">
+<div class="icon"></div>
+<div>
+<h3>Internships & Job Opportunities</h3>
+<p>Get access to verified internships and job openings from leading companies.</p>
+</div>
+</div>
+
+<button>Explore Placements →</button>
+
+</div>
+
+</section>
+
 <!-- FOOTER -->
 
 <div class="footer">
-© 2025 Ranchi Women’s College | Placement Cell
+© 2026 Ranchi Women’s College | Placement Cell
 </div>
 
 </div>
