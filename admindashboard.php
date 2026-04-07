@@ -209,7 +209,7 @@ body{
 
             <div class="row">
                 <span>View Placement Reports</span>
-                <a href="#">View</a>
+                <a href="viewplacementreport.php">View</a>
             </div>
             
 

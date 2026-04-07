@@ -119,11 +119,11 @@ $t1=$_SESSION["xx"];
 $conn = mysqli_connect("localhost","root","","placement");
 
 /* ===== TOTAL COUNT ===== */
-$total_res = mysqli_query($conn,"select count(*) as total from application where companyemail='$t1'");
+$total_res = mysqli_query($conn,"select count(*) as total from application ");
 $total = mysqli_fetch_array($total_res);
 
 /* ===== STATUS COUNT ===== */
-$status_res = mysqli_query($conn,"select status, count(*) as total from application where companyemail='$t1' group by status");
+$status_res = mysqli_query($conn,"select status, count(*) as total from application  group by status");
 
 $pending=0; $selected=0; $rejected=0;
 
@@ -146,9 +146,9 @@ while($row=mysqli_fetch_array($status_res)){
 <center>
 
 <?php
-echo "<b>Company Email:</b> ".$t1."<br><br>";
+echo "<b>Admin Email:</b> ".$t1."<br><br>";
 
-$sql = mysqli_query($conn,"select * from application where companyemail='$t1'");
+$sql = mysqli_query($conn,"select * from application ");
 ?>
 
 <table>
