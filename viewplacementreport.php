@@ -7,6 +7,8 @@ session_start();
 <meta charset="UTF-8">
 <title>View Student Applications</title>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <style>
 body{
     margin:0;
@@ -46,7 +48,7 @@ body{
     margin-bottom:20px;
 }
 
-/* ===== CARD STATS ===== */
+/* ===== STATS ===== */
 .stats{
     display:flex;
     gap:20px;
@@ -64,7 +66,24 @@ body{
     color:#2c2f5a;
 }
 
-/* TABLE */
+/* ===== CHART ===== */
+.chart-container{
+    display:flex;
+    justify-content:center;
+    margin-bottom:30px;
+}
+
+.chart-box{
+    background:#fff;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    width:280px;
+    height:280px;
+    text-align:center;
+}
+
+/* ===== TABLE ===== */
 .table-box{
     background:#fff;
     border-radius:12px;
@@ -123,7 +142,7 @@ $total_res = mysqli_query($conn,"select count(*) as total from application ");
 $total = mysqli_fetch_array($total_res);
 
 /* ===== STATUS COUNT ===== */
-$status_res = mysqli_query($conn,"select status, count(*) as total from application  group by status");
+$status_res = mysqli_query($conn,"select status, count(*) as total from application group by status");
 
 $pending=0; $selected=0; $rejected=0;
 
@@ -140,6 +159,14 @@ while($row=mysqli_fetch_array($status_res)){
     <div class="card">Pending<br><b><?php echo $pending; ?></b></div>
     <div class="card">Selected<br><b><?php echo $selected; ?></b></div>
     <div class="card">Rejected<br><b><?php echo $rejected; ?></b></div>
+</div>
+
+<!-- ===== PIE CHART ===== -->
+<div class="chart-container">
+    <div class="chart-box">
+        <h3>Application Status</h3>
+        <canvas id="myChart"></canvas>
+    </div>
 </div>
 
 <div class="table-box">
@@ -187,5 +214,26 @@ while($di = mysqli_fetch_array($sql))
 </div>
 
 </div>
+
+<!-- ===== CHART SCRIPT ===== -->
+<script>
+const ctx = document.getElementById('myChart');
+
+new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ['Pending', 'Selected', 'Rejected'],
+        datasets: [{
+            data: [<?php echo $pending; ?>, <?php echo $selected; ?>, <?php echo $rejected; ?>],
+            backgroundColor: ['orange','green','red']
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false
+    }
+});
+</script>
+
 </body>
 </html>

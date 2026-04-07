@@ -1,25 +1,42 @@
 <html>
 <body>
+
 <?php
-$t1=$_GET['nm1'];
-$t2=$_GET['nm2'];
-$t3=$_GET['nm3'];
-$t4=$_GET['nm4'];
-$t5=$_GET['nm5'];
-$t6=$_GET['nm6'];
-$t7=$_GET['nm7'];
-$t8=$_GET['nm8'];
-$conn=mysqli_connect("localhost","root","","placement");
-mysqli_select_db($conn,"placement");
-$recs=mysqli_query($conn,"update application set status='$t8' where applicationid='$t1'");
-if($recs!=0)
+
+$conn = mysqli_connect("localhost","root","","placement");
+
+/* GET ARRAYS FROM FORM */
+$appid = $_GET['appid'];   // array of application IDs
+$status = $_GET['status']; // array of statuses
+
+$success = 0;
+
+/* LOOP FOR MULTIPLE UPDATE */
+for($i=0; $i<count($appid); $i++)
 {
-  print"<h2>Data Updated!...</h2>";
+    $id = $appid[$i];
+    $st = $status[$i];
+
+    $query = "update application set status='$st' where applicationid='$id'";
+    $res = mysqli_query($conn,$query);
+
+    if($res)
+    {
+        $success++;
+    }
+}
+
+/* MESSAGE */
+if($success > 0)
+{
+    echo "<h2 style='color:green; text-align:center;'>Status Updated Successfully!</h2>";
 }
 else
 {
-  print"<h2>Sorry try again!...</h2>";
+    echo "<h2 style='color:red; text-align:center;'>No Update Done! Try Again.</h2>";
 }
+
 ?>
+
 </body>
 </html>

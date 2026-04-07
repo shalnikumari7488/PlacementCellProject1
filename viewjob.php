@@ -7,7 +7,7 @@ $t1 = $_SESSION["xx"];
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Student Profile | Placement Portal</title>
+<title>Available Jobs | Placement Portal</title>
 
 <style>
 *{
@@ -17,96 +17,171 @@ $t1 = $_SESSION["xx"];
     font-family:"Segoe UI", Arial, sans-serif;
 }
 
-/* ===== BACKGROUND IMAGE ===== */
 body{
-    background:url("c1.jpg") no-repeat center center/cover;
-    background-attachment:fixed;
+    background:#f4f6f9;
 }
 
-/* ===== HEADER (SAME AS BEFORE) ===== */
+/* HEADER */
 .header{
-    background:rgba(44,47,90,0.95);
+    background:#2c2f5a;
     display:flex;
     align-items:center;
-    padding:14px 40px;
+    padding:16px 40px;
 }
-.logo img{
-    width:55px;
-}
-.title{
-    margin-left:15px;
-}
-.title h1{
-    color:#fff;
-    font-size:24px;
-}
-.title p{
-    color:#dcdcff;
-    font-size:14px;
-}
-.nav{
-    margin-left:auto;
-}
+.logo img{width:55px;}
+.title{margin-left:15px;}
+.title h1{color:#fff;font-size:24px;}
+.title p{color:#ccc;font-size:14px;}
+.nav{margin-left:auto;}
 .nav a{
     color:#fff;
     text-decoration:none;
-    margin-left:18px;
+    margin-left:20px;
     font-size:14px;
-    font-weight:600;
 }
-.nav a:hover{
-    color:#ffdf6c;
-}
+.nav a:hover{color:#ffdf6c;}
 
-/* ===== MAIN ===== */
+/* MAIN */
 .main{
-    padding:60px;
+    padding:40px 80px;
+}
+
+/* JOB LIST */
+.job-container{
     display:flex;
-    justify-content:center;
+    flex-direction:column;
+    gap:20px;
 }
 
-/* PROFILE CARD */
-.profile{
-    background:#ffffff;
-    width:600px;
+/* CARD */
+.job-card{
+    display:flex;
+    background:#fff;
     border-radius:12px;
-    box-shadow:0 12px 30px rgba(0,0,0,0.3);
+    box-shadow:0 5px 20px rgba(0,0,0,0.08);
     overflow:hidden;
+    transition:0.3s;
 }
-.profile-header{
-    background:#2c2f5a;
-    color:#fff;
-    padding:18px;
-    font-size:18px;
-    font-weight:600;
-}
-.profile-body{
-    padding:25px;
+.job-card:hover{
+    transform:translateY(-4px);
 }
 
-/* ROWS */
-.row{
+/* IMAGE */
+.job-img{
+    width:220px;
+    height:100%;
+    object-fit:cover;
+}
+
+/* CONTENT */
+.job-content{
+    padding:20px;
+    flex:1;
+}
+
+/* TOP ROW */
+.top-row{
     display:flex;
     justify-content:space-between;
-    padding:12px 0;
-    border-bottom:1px solid #e0e0e0;
+    align-items:center;
 }
-.row:last-child{
-    border-bottom:none;
+
+/* TITLE */
+.job-title{
+    font-size:20px;
+    font-weight:700;
+    color:#2c2f5a;
 }
-.label{
+
+.company{
+    font-size:15px;
+    color:#666;
+    margin-top:3px;
+}
+
+/* SALARY BADGE */
+.salary{
+    background:#e6f4ea;
+    color:#1e7e34;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:13px;
     font-weight:600;
-    color:#333;
 }
-.value{
-    color:#555;
+
+/* INFO */
+.info{
+    font-size:14px;
+    margin:6px 0;
+    color:#444;
+}
+
+/* BUTTONS */
+.actions{
+    margin-top:12px;
+}
+
+.btn{
+    padding:7px 18px;
+    border:none;
+    border-radius:20px;
+    cursor:pointer;
+    font-size:13px;
+    margin-right:10px;
+}
+
+/* VIEW */
+.view-btn{
+    background:#0073b1;
+    color:#fff;
+}
+.view-btn:hover{
+    background:#005582;
+}
+
+/* APPLY */
+.apply-btn{
+    background:#28a745;
+    color:#fff;
+}
+.apply-btn:hover{
+    background:#1e7e34;
+}
+
+/* DETAILS */
+.more{
+    display:none;
+    margin-top:12px;
+    border-top:1px solid #ddd;
+    padding-top:12px;
+    animation:fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;transform:translateY(10px);}
+    to{opacity:1;transform:translateY(0);}
 }
 </style>
+
+<script>
+function toggleDetails(id, btn){
+    let x = document.getElementById(id);
+
+    if(x.style.display === "block"){
+        x.style.display = "none";
+        btn.style.display = "inline-block";
+    } else {
+        x.style.display = "block";
+        btn.style.display = "none";
+    }
+}
+</script>
+
 </head>
 
 <body>
 
-<!-- ===== HEADER ===== -->
+<!-- HEADER -->
 <div class="header">
     <div class="logo">
         <img src="logo.jpg">
@@ -118,7 +193,7 @@ body{
     </div>
 
     <div class="nav">
-        <a href="frontpage.html">Home</a>
+        <a href="front.html">Home</a>
         <a href="studentlogin.html">Student Login</a>
         <a href="companylogin.html">Company Login</a>
         <a href="registration.html">Registration</a>
@@ -127,77 +202,73 @@ body{
     </div>
 </div>
 
-<!-- ===== MAIN CONTENT ===== -->
+<!-- MAIN -->
 <div class="main">
 
-<div class="profile">
-    <div class="profile-header">
-       Posted jobs
-    </div>
-
-    <div class="profile-body">
+<div class="job-container">
 
 <?php
 $conn = mysqli_connect("localhost","root","","placement");
-mysqli_select_db($conn,"placement");
 
 $sql = mysqli_query($conn,"select * from job");
+
+$i=0;
 while($di = mysqli_fetch_array($sql))
 {
+    $i++;
 ?>
-        <div class="row">
-            <div class="label">job role</div>
-            <div class="value"><?php echo $di[0]; ?></div>
+
+<div class="job-card">
+
+    <!-- IMAGE -->
+    <img src="<?php echo $di[9]; ?>" class="job-img">
+
+    <!-- CONTENT -->
+    <div class="job-content">
+
+        <!-- TOP -->
+        <div class="top-row">
+            <div>
+                <div class="job-title"><?php echo $di[0]; ?></div>
+                <div class="company"><?php echo $di[4]; ?></div>
+            </div>
+
+            <div class="salary">
+                <?php echo $di[3]; ?>
+            </div>
         </div>
 
-        <div class="row">
-            <div class="label">job description</div>
-            <div class="value"><?php echo $di[1]; ?></div>
+        <!-- BASIC INFO -->
+        <div class="info"><b>📍 Location:</b> <?php echo $di[6]; ?></div>
+        <div class="info"><b>📅 Last Date:</b> <?php echo $di[7]; ?></div>
+
+        <!-- BUTTONS -->
+        <div class="actions">
+            <button class="btn view-btn" onclick="toggleDetails('more<?php echo $i; ?>', this)">
+                View More
+            </button>
+
+           <a href="applyjob.html" target="_blank">
+    <button class="btn apply-btn">Apply Now</button>
+</a>
         </div>
 
-        <div class="row">
-            <div class="label">eligibility</div>
-            <div class="value"><?php echo $di[2]; ?></div>
+        <!-- MORE DETAILS -->
+        <div class="more" id="more<?php echo $i; ?>">
+
+            <div class="info"><b>Description:</b> <?php echo $di[1]; ?></div>
+            <div class="info"><b>Eligibility:</b> <?php echo $di[2]; ?></div>
+            <div class="info"><b>Email:</b> <?php echo $di[5]; ?></div>
+            <div class="info"><b>Post Date:</b> <?php echo $di[8]; ?></div>
+
         </div>
 
-        <div class="row">
-            <div class="label">package</div>
-            <div class="value"><?php echo $di[3]; ?></div>
-        </div>
-
-        <div class="row">
-            <div class="label">Company name</div>
-            <div class="value"><?php echo $di[4]; ?></div>
-        </div>
-<div class="row">
-            <div class="label">Company Email</div>
-            <div class="value"><?php echo $di[5]; ?></div>
-        </div>
-
-        <div class="row">
-            <div class="label">location</div>
-            <div class="value"><?php echo $di[6]; ?></div>
-        </div>
- <div class="row">
-            <div class="label">last date</div>
-            <div class="value"><?php echo $di[7]; ?></div>
-        </div>
- <div class="row">
-            <div class="label">post date</div>
-            <div class="value"><?php echo $di[8]; ?></div>
-        </div>
-<div class="row">
-    <div class="label">Photo</div>
-    <div class="value">
-        <img src="<?php echo $di[9]; ?>" style="width:120px; height:120px; object-fit:cover; border-radius:8px;">
     </div>
+
 </div>
 
-<?php
-}
-?>
+<?php } ?>
 
-    </div>
 </div>
 
 </div>
