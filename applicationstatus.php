@@ -6,7 +6,7 @@ session_start();
 <html>
 <head>
 <meta charset="UTF-8">
-<title>My Application Status | Placement Portal</title>
+<title>My Applications | Placement Portal</title>
 
 <style>
 *{
@@ -18,11 +18,11 @@ session_start();
 
 body{
     background:
-    linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+    linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
     url("bg1.jpg") no-repeat center center/cover;
 }
 
-/* ===== HEADER ===== */
+/* HEADER */
 .header{
     background:rgba(44,47,90,0.95);
     display:flex;
@@ -43,59 +43,84 @@ body{
 }
 .nav a:hover{color:#ffdf6c;}
 
-/* ===== MAIN ===== */
+/* MAIN */
 .main{
-    padding:60px;
-    display:flex;
-    justify-content:center;
-}
-
-/* CARD */
-.status-box{
-    background:rgba(255,255,255,0.97);
-    padding:30px;
-    border-radius:14px;
-    width:100%;
-    max-width:750px;
-    box-shadow:0 15px 35px rgba(0,0,0,0.3);
+    padding:50px 80px;
 }
 
 /* TITLE */
-.status-box h2{
-    text-align:center;
-    color:#2c2f5a;
+.page-title{
+    color:#fff;
     margin-bottom:25px;
 }
-
-/* APPLICATION CARD */
-.app-card{
-    border:1px solid #e0e0e0;
-    border-radius:10px;
-    padding:20px;
-    margin-bottom:20px;
-    background:#fafafa;
-    transition:0.3s;
+.page-title h2{
+    font-size:32px;
 }
-.app-card:hover{
-    transform:scale(1.01);
+.page-title p{
+    font-size:14px;
+    opacity:0.8;
 }
 
-/* ROW */
-.row{
+/* ===== STATS ===== */
+.stats{
     display:flex;
-    justify-content:space-between;
-    padding:8px 0;
+    gap:20px;
+    margin-bottom:30px;
+}
+
+.stat-card{
+    flex:1;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(10px);
+    padding:20px;
+    border-radius:12px;
+    color:#fff;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
+
+.stat-card h3{
+    font-size:22px;
+}
+.stat-card p{
+    font-size:13px;
+    opacity:0.8;
+}
+
+/* TABLE BOX */
+.table-box{
+    background:rgba(255,255,255,0.95);
+    border-radius:12px;
+    padding:20px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.3);
+}
+
+/* TABLE */
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th{
+    background:#2c2f5a;
+    color:#fff;
+    padding:12px;
     font-size:14px;
 }
-.label{
-    font-weight:600;
-    color:#2c2f5a;
-}
-.value{
-    color:#444;
+
+td{
+    padding:12px;
+    text-align:center;
+    font-size:13px;
+    border-bottom:1px solid #eee;
 }
 
-/* STATUS BADGE */
+tr:hover{
+    background:#f5f7ff;
+    transition:0.2s;
+}
+
+/* STATUS */
 .status{
     padding:5px 12px;
     border-radius:20px;
@@ -107,16 +132,14 @@ body{
 .selected{background:#d4edda; color:#155724;}
 .rejected{background:#f8d7da; color:#721c24;}
 
-/* RESUME BUTTON */
+/* BUTTON */
 .resume-btn{
-    display:inline-block;
-    margin-top:10px;
-    padding:6px 15px;
+    padding:6px 14px;
     background:#5a5fcf;
     color:#fff;
     text-decoration:none;
     border-radius:20px;
-    font-size:13px;
+    font-size:12px;
 }
 .resume-btn:hover{
     background:#2c2f5a;
@@ -138,85 +161,100 @@ body{
     </div>
 
     <div class="nav">
-        <a href="frontpage.html">Home</a>
-        <a href="studentdashboard.php">Dashboard</a>
+        <a href="front.html">Home</a>
+        <a href="studentlogin.html">Student Login</a>
+        <a href="companylogin.html">Company Login</a>
+        <a href="registration.html">Registration</a>
+        <a href="adminlogin.html">Admin</a>
         <a href="contact.html">Contact</a>
-        <a href="logout.php">Logout</a>
     </div>
 </div>
 
 <!-- MAIN -->
 <div class="main">
-<div class="status-box">
 
-<h2>My Application Status</h2>
+<div class="page-title">
+    <h2>My Applications</h2>
+    <p>Track and manage your job applications</p>
+</div>
 
 <?php
 $t1=$_SESSION["xx"];
-
 $conn = mysqli_connect("localhost","root","","placement");
+
+/* COUNTS */
+$total = mysqli_fetch_array(mysqli_query($conn,"select count(*) from application where studentemail='$t1'"));
+$pending = mysqli_fetch_array(mysqli_query($conn,"select count(*) from application where studentemail='$t1' and status='Pending'"));
+$selected = mysqli_fetch_array(mysqli_query($conn,"select count(*) from application where studentemail='$t1' and status='Selected'"));
+$rejected = mysqli_fetch_array(mysqli_query($conn,"select count(*) from application where studentemail='$t1' and status='Rejected'"));
+?>
+
+<!-- STATS -->
+<div class="stats">
+    <div class="stat-card">
+        <h3><?php echo $total[0]; ?></h3>
+        <p>Total Applied</p>
+    </div>
+    <div class="stat-card">
+        <h3><?php echo $pending[0]; ?></h3>
+        <p>Pending</p>
+    </div>
+    <div class="stat-card">
+        <h3><?php echo $selected[0]; ?></h3>
+        <p>Selected</p>
+    </div>
+    <div class="stat-card">
+        <h3><?php echo $rejected[0]; ?></h3>
+        <p>Rejected</p>
+    </div>
+</div>
+
+<!-- TABLE -->
+<div class="table-box">
+
+<table>
+<tr>
+    <th>ID</th>
+    <th>Company</th>
+    <th>Job Role</th>
+    <th>Apply Date</th>
+    <th>Status</th>
+    <th>Resume</th>
+</tr>
+
+<?php
 $sql = mysqli_query($conn,"select * from application where studentemail='$t1'");
 
 while($di = mysqli_fetch_array($sql))
-{ 
-    $status = strtolower($di[7]); // for class
+{
+    $status = strtolower($di[8]);
 ?>
 
-<!-- APPLICATION CARD -->
-<div class="app-card">
+<tr>
+    <td><?php echo $di[0]; ?></td>
+    <td><?php echo $di[4]; ?></td>
+    <td><?php echo $di[5]; ?></td>
+    <td><?php echo $di[7]; ?></td>
 
-    <div class="row">
-        <div class="label">Application ID</div>
-        <div class="value"><?php echo $di[0]; ?></div>
-    </div>
-    <div class="row">
-        <div class="label">Student Email</div>
-        <div class="value"><?php echo $di[1]; ?></div>
-    </div>
-    <div class="row">
-        <div class="label">Student Name</div>
-        <div class="value"><?php echo $di[2]; ?></div>
-    </div>
+    <td>
+        <span class="status <?php echo $status; ?>">
+            <?php echo $di[8]; ?>
+        </span>
+    </td>
 
-    <div class="row">
-        <div class="label">Company Id</div>
-        <div class="value"><?php echo $di[3]; ?></div>
-</div>
-
-<div class="row">
-        <div class="label">Company Email</div>
-        <div class="value"><?php echo $di[4]; ?></div>
-    </div>
-
-    <div class="row">
-        <div class="label">Job Role</div>
-        <div class="value"><?php echo $di[5]; ?></div>
-    </div>
-
-    <div class="row">
-        <div class="label">Apply Date</div>
-        <div class="value"><?php echo $di[7]; ?></div>
-    </div>
-
-    <div class="row">
-        <div class="label">Status</div>
-        <div class="value">
-            <span class="status <?php echo $status; ?>">
-                <?php echo $di[8]; ?>
-            </span>
-        </div>
-    </div>
-
-    <!-- RESUME SECTION -->
-    <a href="uploads/<?php echo $di[6]; ?>" target="_blank" class="resume-btn">
-        View Resume
-    </a>
-
-</div>
+    <td>
+        <a href="uploads/<?php echo $di[6]; ?>" target="_blank" class="resume-btn">
+            View
+        </a>
+    </td>
+</tr>
 
 <?php } ?>
 
+</table>
+
 </div>
+
 </div>
 
 </body>
