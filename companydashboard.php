@@ -225,7 +225,7 @@ body{
 
 <!-- ===== FOOTER ===== -->
 <div class="footer">
-    © 2025 Ranchi Women’s College | Placement Cell
+    © 2026 Ranchi Women’s College | Placement Cell
 </div>
 </center>
 </body>

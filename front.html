@@ -256,6 +256,94 @@ button {
 button:hover {
   background: #574fd6;
 }
+/* ===== IMAGE ENTRY ANIMATION (FIXED) ===== */
+
+/* initial state */
+.main-img,
+.small-img,
+.circle,
+.experience {
+  opacity: 0;
+  transform: scale(1.08) translateY(40px);
+}
+
+/* animation */
+@keyframes imagePop {
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* apply animation */
+.main-img,
+.small-img,
+.circle,
+.experience {
+  animation: imagePop 0.9s ease-out forwards;
+}
+
+
+.main-img { animation-delay: 0.2s; }
+.small-img.top { animation-delay: 0.4s; }
+.small-img.bottom { animation-delay: 0.6s; }
+.circle { animation-delay: 0.3s; }
+.experience { animation-delay: 0.7s; }
+
+/* ===== PERFECT BACKGROUND ZOOM EFFECT ===== */
+
+.main {
+  animation: bgZoom 1.3s ease-out forwards;
+}
+
+/* smooth zoom-out */
+@keyframes bgZoom {
+  0% {
+    background-size: 115%;
+    background-position: center bottom;
+  }
+  100% {
+    background-size: 100%;
+    background-position: center;
+  }
+}
+
+
+.main h2 {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: textFade 1s ease-out forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes textFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* ===== PREMIUM STAGGER ANIMATION ===== */
+
+.reveal {
+  opacity: 0;
+  transform: scale(1.15) translateY(60px);
+  transition: all 1s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* visible */
+.reveal.show {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+}
+
+/* 🔥 stagger delays (main hero images) */
+.main-img { transition-delay: 0.2s; }
+.small-img.top { transition-delay: 0.4s; }
+.small-img.bottom { transition-delay: 0.6s; }
+.circle { transition-delay: 0.3s; }
+.experience { transition-delay: 0.7s; }
+
+
 
 /* ===== FOOTER ===== */
 
@@ -322,11 +410,15 @@ color:#666;
 
 <div class="left">
 <div class="circle">Shape Your Career Path</div>
-<img src="bg2.jpg" class="main-img">
-<img src="bg3.jpg" class="small-img top">
-<img src="bg4.jpg" class="small-img bottom">
+<img src="bg2.jpg" class="main-img reveal">
+<img src="bg3.jpg" class="small-img top reveal">
+<img src="bg4.jpg" class="small-img bottom reveal">
 
-<div class="experience">
+<div class="circle reveal">Shape Your Career Path</div>
+
+<div class="experience reveal">
+
+
 <h2>25</h2>
 <p>Years of Placement Excellence</p>
 </div>
@@ -367,6 +459,7 @@ internship opportunities, and campus recruitment drives to help students build s
 
 </section>
 
+
 <!-- FOOTER -->
 
 <div class="footer">
@@ -374,6 +467,22 @@ internship opportunities, and campus recruitment drives to help students build s
 </div>
 
 </div>
+<script>
+function revealOnScroll() {
+  const elements = document.querySelectorAll(".reveal");
 
+  elements.forEach(el => {
+    const windowHeight = window.innerHeight;
+    const elementTop = el.getBoundingClientRect().top;
+
+    if (elementTop < windowHeight - 80) {
+      el.classList.add("show");
+    }
+  });
+}
+
+window.addEventListener("scroll", revealOnScroll);
+rect.top < window.innerHeight * 0.6
+</script>
 </body>
 </html>
