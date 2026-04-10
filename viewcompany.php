@@ -11,38 +11,35 @@ if(!isset($_SESSION["xx"])) {
 <meta charset="UTF-8">
 <title>Available Companies | Placement Portal</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
 <style>
-body{
+*{
     margin:0;
-    font-family:"Segoe UI", Arial, sans-serif;
-    background:url("bg2.jpg") no-repeat center center/cover;
-    background-attachment: fixed;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
 }
 
-/* ===== HEADER ===== */
+/* BACKGROUND */
+body{
+    background:linear-gradient(rgba(44,47,90,0.7), rgba(44,47,90,0.7)),
+               url("bg4.jpg") no-repeat center center/cover;
+}
+
+/* HEADER */
 .header{
     background:rgba(44,47,90,0.95);
     display:flex;
     align-items:center;
     padding:14px 40px;
 }
-.logo img{
-    width:55px;
-}
-.title{
-    margin-left:15px;
-}
-.title h1{
-    color:#fff;
-    font-size:24px;
-}
-.title p{
-    color:#dcdcff;
-    font-size:14px;
-}
-.nav{
-    margin-left:auto;
-}
+.logo img{ width:55px; }
+.title{ margin-left:15px; }
+.title h1{ color:#fff; font-size:24px; }
+.title p{ color:#dcdcff; font-size:14px; }
+
+.nav{ margin-left:auto; }
 .nav a{
     color:#fff;
     text-decoration:none;
@@ -50,58 +47,86 @@ body{
     font-size:14px;
     font-weight:600;
 }
-.nav a:hover{
-    color:#ffdf6c;
-}
+.nav a:hover{ color:#ffdf6c; }
 
-/* ===== MAIN ===== */
+/* MAIN */
 .main{
-    padding:60px;
+    padding:50px;
 }
 
-/* PAGE TITLE */
+/* TITLE */
 .page-title{
     font-size:32px;
     font-weight:700;
     color:#fff;
     margin-bottom:30px;
-    text-shadow:2px 4px 10px rgba(0,0,0,0.6);
 }
 
-/* TABLE */
-.table-box{
+/* GRID */
+.company-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
+    gap:25px;
+}
+
+/* CARD */
+.card{
     background:#fff;
-    border-radius:12px;
-    padding:25px;
-    box-shadow:0 12px 30px rgba(0,0,0,0.25);
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-}
-
-th, td{
-    padding:12px;
+    border-radius:14px;
+    padding:20px;
+    box-shadow:0 12px 25px rgba(0,0,0,0.2);
+    transition:0.3s;
     text-align:center;
-    border-bottom:1px solid #ddd;
-    font-size:14px;
 }
 
-th{
+.card:hover{
+    transform:translateY(-6px);
+    box-shadow:0 18px 35px rgba(0,0,0,0.3);
+}
+
+/* IMAGE */
+.card img{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    object-fit:cover;
+    margin-bottom:10px;
+}
+
+/* NAME */
+.card h3{
+    color:#2c2f5a;
+    margin-bottom:5px;
+}
+
+/* DETAILS */
+.card p{
+    font-size:13px;
+    color:#666;
+    margin:3px 0;
+}
+
+/* BUTTON */
+.btn{
+    margin-top:12px;
+    display:inline-block;
+    padding:8px 14px;
     background:#2c2f5a;
     color:#fff;
+    border-radius:6px;
+    text-decoration:none;
+    font-size:13px;
 }
 
-tr:hover{
-    background:#f5f5f5;
+.btn:hover{
+    background:#1e2145;
 }
 </style>
 </head>
 
 <body>
 
-<!-- ===== HEADER ===== -->
+<!-- HEADER -->
 <div class="header">
     <div class="logo">
         <img src="logo.jpg">
@@ -122,45 +147,39 @@ tr:hover{
     </div>
 </div>
 
-<!-- ===== MAIN ===== -->
+<!-- MAIN -->
 <div class="main">
-    <div class="page-title">Available Companies</div>
 
-    <div class="table-box">
-        <table border="0" cellspacing="10">
-            <tr>
-                <th>Company Name</th>
-                <th>Company Email</th>
-                <th>Company ID</th>
-                <th>Contact</th>
-                <th>City</th>
-                <th>State</th>
-                <th>Photo</th>
-            </tr>
+<div class="page-title">Explore Companies</div>
 
-            <?php
-            $conn = mysqli_connect("localhost","root","","placement");
-            $sql = mysqli_query($conn,"SELECT * FROM company");
+<div class="company-grid">
 
-            while($di = mysqli_fetch_array($sql)){
-            ?>
-            <tr>
-                <td><?php echo $di[0]; ?></td>
-                <td><?php echo $di[1]; ?></td>
-                <td><?php echo $di[2]; ?></td>
-                <td><?php echo $di[4]; ?></td>
-                <td><?php echo $di[5]; ?></td>
- <td><?php echo $di[6]; ?></td>
+<?php
+$conn = mysqli_connect("localhost","root","","placement");
+$sql = mysqli_query($conn,"SELECT * FROM company");
 
-                
-                                <td>
-                    <img src="<?php echo $di[7]; ?>" width="80" height="80">
-                </td>
+while($di = mysqli_fetch_array($sql)){
+?>
 
-            </tr>
-            <?php } ?>
-        </table>
-    </div>
+<div class="card">
+
+    <img src="<?php echo $di[7]; ?>">
+
+    <h3><?php echo $di[0]; ?></h3>
+
+    <p><strong>Email:</strong> <?php echo $di[1]; ?></p>
+    <p><strong>Company ID:</strong> <?php echo $di[2]; ?></p>
+    <p><strong>Contact:</strong> <?php echo $di[4]; ?></p>
+    <p><strong>Location:</strong> <?php echo $di[5]; ?>, <?php echo $di[6]; ?></p>
+
+    <a href="#" class="btn">View Details</a>
+
+</div>
+
+<?php } ?>
+
+</div>
+
 </div>
 
 </body>

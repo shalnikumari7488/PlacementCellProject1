@@ -21,7 +21,7 @@ html,body{
 
 /* ===== BACKGROUND ===== */
 body{
-    background:url("bg6.jpg") no-repeat center center/cover;
+    background:url("bg4.jpg") no-repeat center center/cover;
     background-attachment: fixed;
 }
 
@@ -183,9 +183,7 @@ body{
 <h2>Welcome <?php echo $yy; ?></h2>
 
     <div class="welcome">Welcome to Placement Portal</div>
-    <div class="subtext">
-        Student Dashboard – Manage your profile and placement activities
-    </div>
+    
 
     <div class="panel">
         <div class="panel-header">

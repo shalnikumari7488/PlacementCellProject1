@@ -343,8 +343,42 @@ button:hover {
 .circle { transition-delay: 0.3s; }
 .experience { transition-delay: 0.7s; }
 
+.logo-slider{
+    background:#fff;
+    overflow:hidden;
+    padding:25px 0;
+    border-top:1px solid #eee;
+    border-bottom:1px solid #eee;
+}
 
+/* track */
+.logo-track{
+    display:flex;
+    width:max-content;
+    animation:scroll 20s linear infinite;
+}
 
+/* images */
+.logo-track img{
+    width:180px;
+    height:100px;
+    object-fit:contain;
+    margin:0;              /* 🔥 no gap */
+    padding:0;
+}
+
+/* animation */
+@keyframes scroll{
+    0%{ transform:translateX(0); }
+    100%{ transform:translateX(-50%); }
+}
+.slider-title{
+    text-align:center;
+    font-size:26px;
+    color:#2c2f5a;
+    margin:20px 0;
+}
+animation:scroll 25s linear infinite;
 /* ===== FOOTER ===== */
 
 .footer{
@@ -403,8 +437,26 @@ color:#666;
 <div class="main">
 <h2>Welcome to <span>Placement Portal</span></h2>
 </div>
+<h2 class="slider-title">Top Recruiters</h2>
+<div class="logo-slider">
+    <div class="logo-track">
 
-<!-- HERO SECTION (STARTS AFTER IMAGE) -->
+        <img src="c0.jpg">
+        <img src="c2.jpg">
+        <img src="c3.jpg">
+        <img src="c4.jpg">
+        <img src="c5.jpg">
+
+        <!-- repeat for smooth infinite scroll -->
+        <img src="c0.jpg">
+        <img src="c2.jpg">
+        <img src="c3.jpg">
+        <img src="c4.jpg">
+        <img src="c5.jpg">
+
+    </div>
+</div>
+<!-- HERO SECTION -->
 
 <section class="hero">
 
@@ -459,13 +511,13 @@ internship opportunities, and campus recruitment drives to help students build s
 
 </section>
 
-
+<center>
 <!-- FOOTER -->
 
 <div class="footer">
 © 2026 Ranchi Women’s College | Placement Cell
 </div>
-
+</center>
 </div>
 <script>
 function revealOnScroll() {
