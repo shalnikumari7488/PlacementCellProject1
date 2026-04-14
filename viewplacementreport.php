@@ -52,7 +52,7 @@ body{
 .stats{
     display:flex;
     gap:20px;
-    margin-bottom:25px;
+    margin-bottom:30px;
 }
 .card{
     background:#fff;
@@ -60,27 +60,44 @@ body{
     border-radius:10px;
     box-shadow:0 8px 20px rgba(0,0,0,0.2);
     font-size:14px;
+    transition:0.3s;
+}
+.card:hover{
+    transform:translateY(-5px);
 }
 .card b{
     font-size:20px;
     color:#2c2f5a;
 }
 
-/* ===== CHART ===== */
-.chart-container{
+/* ===== DASHBOARD (CHART + SUMMARY) ===== */
+.dashboard{
     display:flex;
-    justify-content:center;
+    gap:30px;
     margin-bottom:30px;
 }
 
+/* CHART */
 .chart-box{
+    flex:1;
     background:#fff;
     padding:20px;
     border-radius:12px;
     box-shadow:0 10px 25px rgba(0,0,0,0.2);
-    width:280px;
-    height:280px;
-    text-align:center;
+    height:320px;
+}
+
+/* SUMMARY */
+.summary-box{
+    flex:1;
+    background:#fff;
+    border-radius:12px;
+    padding:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+.summary-box h3{
+    margin-bottom:10px;
 }
 
 /* ===== TABLE ===== */
@@ -89,6 +106,8 @@ body{
     border-radius:12px;
     padding:25px;
     box-shadow:0 12px 30px rgba(0,0,0,0.25);
+    max-height:400px;
+    overflow:auto;
 }
 
 table{
@@ -103,6 +122,8 @@ th, td{
 th{
     background:#2c2f5a;
     color:#fff;
+    position:sticky;
+    top:0;
 }
 tr:hover{background:#f5f5f5;}
 </style>
@@ -161,12 +182,31 @@ while($row=mysqli_fetch_array($status_res)){
     <div class="card">Rejected<br><b><?php echo $rejected; ?></b></div>
 </div>
 
-<!-- ===== PIE CHART ===== -->
-<div class="chart-container">
+<!-- ===== DASHBOARD ===== -->
+<div class="dashboard">
+
+    <!-- CHART -->
     <div class="chart-box">
         <h3>Application Status</h3>
         <canvas id="myChart"></canvas>
     </div>
+
+    <!-- SUMMARY -->
+    <div class="summary-box">
+        <h3>Quick Insights</h3>
+
+        <p>Total Applications: <b><?php echo $total['total']; ?></b></p>
+        <p style="color:orange;">Pending: <b><?php echo $pending; ?></b></p>
+        <p style="color:green;">Selected: <b><?php echo $selected; ?></b></p>
+        <p style="color:red;">Rejected: <b><?php echo $rejected; ?></b></p>
+
+        <hr style="margin:15px 0;">
+
+        <p style="font-size:13px;color:#777;">
+        This dashboard shows placement trends and application performance.
+        </p>
+    </div>
+
 </div>
 
 <div class="table-box">
@@ -217,7 +257,7 @@ while($di = mysqli_fetch_array($sql))
 
 <!-- ===== CHART SCRIPT ===== -->
 <script>
-const ctx = document.getElementById('myChart');
+const ctx = document.getElementById('myChart').getContext('2d');
 
 new Chart(ctx, {
     type: 'pie',

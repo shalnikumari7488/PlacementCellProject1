@@ -124,7 +124,7 @@ tr:hover{
 
 <!-- ===== MAIN ===== -->
 <div class="main">
-    <div class="page-title">Available Companies</div>
+    <div class="page-title">All Students</div>
 
     <div class="table-box">
         <table border="0" cellspacing="10">
