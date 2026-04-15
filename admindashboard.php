@@ -15,213 +15,210 @@ $yy = $_SESSION["xx"];
     box-sizing:border-box;
     font-family:"Segoe UI", Arial, sans-serif;
 }
-html,body{
-    height:100%;
-}
 
-/* ===== BACKGROUND ===== */
+/* ===== BODY ===== */
 body{
-    background:url("a1.jpg") no-repeat center center/cover;
-    background-attachment: fixed;
+    display:flex;
+    height:100vh;
+    background:linear-gradient(135deg,#eef1ff,#f6f7fb);
 }
 
-/* ===== HEADER (UNCHANGED) ===== */
-.header{
-    background:rgba(44,47,90,0.95);
+/* ===== SIDEBAR ===== */
+.sidebar{
+    width:250px;
+    background:linear-gradient(180deg,#2c2f5a,#1e2145);
+    color:#fff;
+    display:flex;
+    flex-direction:column;
+    padding:25px 20px;
+    box-shadow:4px 0 15px rgba(0,0,0,0.1);
+}
+
+.sidebar h2{
+    font-size:22px;
+    margin-bottom:30px;
+    letter-spacing:1px;
+}
+
+/* SIDEBAR LINKS */
+.sidebar a{
+    color:#dcdcff;
+    text-decoration:none;
+    padding:12px 15px;
+    border-radius:8px;
+    margin-bottom:10px;
     display:flex;
     align-items:center;
-    padding:14px 40px;
-}
-.logo img{
-    width:55px;
-}
-.title{
-    margin-left:15px;
-}
-.title h1{
-    color:#fff;
-    font-size:24px;
-}
-.title p{
-    color:#dcdcff;
+    gap:10px;
+    transition:0.3s;
     font-size:14px;
 }
-.nav{
-    margin-left:auto;
-}
-.nav a{
+
+.sidebar a:hover{
+    background:rgba(255,255,255,0.1);
     color:#fff;
-    text-decoration:none;
-    margin-left:18px;
-    font-size:14px;
-    font-weight:600;
-}
-.nav a:hover{
-    color:#ffdf6c;
+    transform:translateX(5px);
 }
 
 /* ===== MAIN ===== */
 .main{
-    min-height:calc(100vh - 90px);
-    padding:60px 80px;
+    flex:1;
+    padding:30px 40px;
 }
 
-/* WELCOME TEXT */
-.welcome{
-    font-size:40px;
-    font-weight:700;
-    color:#ffffff;
-    margin-bottom:10px;
-    text-shadow:2px 4px 10px rgba(0,0,0,0.6);
-}
-.subtext{
-    font-size:16px;
-    color:#f0f0f0;
-    margin-bottom:40px;
-}
-
-/* PANEL */
-.panel{
-    background:#ffffff;
-    max-width:750px;
-    border-radius:12px;
-    overflow:hidden;
-    box-shadow:0 12px 30px rgba(0,0,0,0.25);
-}
-
-/* PANEL HEADER */
-.panel-header{
-    background:#2c2f5a;
-    color:#fff;
-    padding:18px 25px;
-    font-size:18px;
-    font-weight:600;
-}
-
-/* PANEL BODY */
-.panel-body{
-    padding:25px;
-}
-
-/* ROW */
-.row{
+/* TOP BAR */
+.topbar{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    padding:15px 0;
-    border-bottom:1px solid #e5e5e5;
-}
-.row:last-child{
-    border-bottom:none;
+    margin-bottom:35px;
 }
 
-.row span{
-    font-size:15px;
-    color:#333;
+.topbar h1{
+    font-size:28px;
+    color:#2c2f5a;
+    font-weight:600;
 }
-.row a{
-    text-decoration:none;
-    font-size:14px;
-    padding:7px 18px;
-    border:1px solid #5a5fcf;
-    color:#5a5fcf;
-    border-radius:20px;
-    transition:0.3s;
-}
-.row a:hover{
-    background:#5a5fcf;
+
+.admin{
+    background:linear-gradient(135deg,#2c2f5a,#4a4fcf);
     color:#fff;
-}
-
-/* FOOTER */
-.footer{
-    text-align:center;
-    padding:10px;
+    padding:8px 18px;
+    border-radius:20px;
     font-size:13px;
-    background:rgba(255,255,255,0.85);
-    color:#444;
+    box-shadow:0 4px 10px rgba(0,0,0,0.2);
 }
 
-/* RESPONSIVE */
-@media(max-width:768px){
-    .main{
-        padding:30px;
-    }
-    .welcome{
-        font-size:30px;
-    }
+/* ===== CARDS ===== */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px,1fr));
+    gap:25px;
+}
+
+/* CARD */
+.card{
+    background:#ffffff;
+    padding:30px 25px;
+    border-radius:16px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    transition:0.3s;
+    position:relative;
+    overflow:hidden;
+}
+
+/* HOVER EFFECT */
+.card:hover{
+    transform:translateY(-8px) scale(1.02);
+    box-shadow:0 15px 35px rgba(0,0,0,0.15);
+}
+
+/* GLOW BORDER EFFECT */
+.card::after{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:4px;
+    left:0;
+    bottom:0;
+    background:linear-gradient(90deg,#6c63ff,#8a7dff);
+}
+
+/* ICON STYLE */
+.card::before{
+    content:"";
+    width:60px;
+    height:60px;
+    border-radius:12px;
+    position:absolute;
+    top:20px;
+    right:20px;
+    opacity:0.15;
+}
+
+/* COLORS */
+.card.students::before{ background:#6c63ff; }
+.card.companies::before{ background:#ff6584; }
+.card.report::before{ background:#28c76f; }
+
+/* TEXT */
+.card h3{
+    font-size:20px;
+    color:#2c2f5a;
+    margin-bottom:10px;
+}
+
+.card p{
+    font-size:14px;
+    color:#666;
+    margin-bottom:25px;
+    line-height:1.5;
+}
+
+/* BUTTON */
+.card a{
+    text-decoration:none;
+    padding:10px 18px;
+    background:linear-gradient(135deg,#2c2f5a,#4a4fcf);
+    color:#fff;
+    border-radius:8px;
+    font-size:13px;
+    transition:0.3s;
+    display:inline-block;
+}
+
+.card a:hover{
+    background:linear-gradient(135deg,#1e2145,#3b3fb5);
+    transform:scale(1.05);
 }
 </style>
 </head>
 
 <body>
 
-<!-- ===== HEADER ===== -->
-<div class="header">
-    <div class="logo">
-        <img src="logo.jpg" alt="Ranchi Women's College Logo">
-    </div>
-
-    <div class="title">
-        <h1>Ranchi Women's College</h1>
-        <p>Placement Cell Management System</p>
-    </div>
-
-    <div class="nav">
-        <a href="front.html">Home</a>
-        <a href="studentlogin.html">Student Login</a>
-        <a href="companylogin.html">Company Login</a>
-        <a href="registration.html">Registration</a>
-        <a href="adminlogin.html">Admin</a>
-        <a href="contact.html">Contact</a>
-    </div>
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <h2>Admin Panel</h2>
+    <a href="front.html">🏠 Home</a>
+    <a href="viewstudent.php">🎓 Manage Students</a>
+    <a href="view_company.php">🏢 Manage Companies</a>
+    <a href="viewplacementreport.php">📊 Placement Reports</a>
+    <a href="adminlogin.html">🚪 Logout</a>
 </div>
 
-<!-- ===== MAIN ===== -->
+<!-- MAIN -->
 <div class="main">
-<center>
-    <h2>Welcome <?php echo $yy; ?></h2>
-    <div class="subtext">
-        Admin Dashboard – Manage students, companies and placements
+
+<!-- TOP BAR -->
+<div class="topbar">
+    <h1>Admin Dashboard</h1>
+    <div class="admin">👤 <?php echo $yy; ?></div>
+</div>
+
+<!-- CARDS -->
+<div class="cards">
+
+    <div class="card students">
+        <h3>Manage Students</h3>
+        <p>View, edit and delete student records easily</p>
+        <a href="viewstudent.php">Open</a>
     </div>
 
-    <div class="panel">
-        <div class="panel-header">
-            Admin Control Panel
-        </div>
+    <div class="card companies">
+        <h3>Manage Companies</h3>
+        <p>Handle company registrations & company details</p>
+        <a href="view_company.php">Open</a>
+    </div>
 
-        <div class="panel-body">
-
-            <div class="row">
-                <span>View / Manage Students</span>
-                <a href="viewstudent.php">Open</a>
-            </div>
-
-            <div class="row">
-                <span>View / Manage Companies</span>
-                <a href="view_company.php">Open</a>
-            </div>
-
-            <div class="row">
-                <span>Approve / Block Company Accounts</span>
-                <a href="deletecompany.html">Manage</a>
-            </div>
-
-            <div class="row">
-                <span>View Placement Reports</span>
-                <a href="viewplacementreport.php">View</a>
-            </div>
-            
-
-        </div>
+    <div class="card report">
+        <h3>Placement Reports</h3>
+        <p>Track applications and placement statistics</p>
+        <a href="viewplacementreport.php">View</a>
     </div>
 
 </div>
 
-<!-- ===== FOOTER ===== -->
-<div class="footer">
-    © 2026 Ranchi Women’s College | Placement Cell
 </div>
-</center>
+
 </body>
 </html>
