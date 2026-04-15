@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body{
+    margin:0;
+    padding:20px;
+    font-family:"Segoe UI";
+    background:#f4f6fb;
+}
+
+/* GRID */
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+    gap:20px;
+}
+
+/* CARD */
+.card{
+    background:#fff;
+    padding:25px;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card h3{
+    margin-bottom:10px;
+    color:#2c2f5a;
+}
+
+.card p{
+    font-size:14px;
+    color:#666;
+}
+
+/* COLORS */
+.students{border-left:5px solid #6c63ff;}
+.companies{border-left:5px solid #ff6584;}
+.report{border-left:5px solid #28c76f;}
+</style>
+</head>
+
+<body>
+
+
+<div class="cards">
+
+    <div class="card students">
+        <h3>Students</h3>
+        <p>Manage all student records</p>
+    </div>
+
+    <div class="card companies">
+        <h3>Companies</h3>
+        <p>View registered companies</p>
+    </div>
+
+    <div class="card report">
+        <h3>Reports</h3>
+        <p>Check placement analytics</p>
+    </div>
+
+</div>
+
+</body>
+</html>

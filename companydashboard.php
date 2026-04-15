@@ -213,10 +213,7 @@ body{
                 <a href="viewstudentapplication.php">Open</a>
             </div>
 
-            <div class="row">
-                <span>Select / Reject Students</span>
-                <a href="selectstudent.html">Manage</a>
-            </div>
+           
 
         </div>
     </div>

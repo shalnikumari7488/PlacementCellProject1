@@ -131,23 +131,6 @@ tr:hover{background:#f5f5f5;}
 
 <body>
 
-<div class="header">
-    <div class="logo">
-        <img src="logo.jpg">
-    </div>
-    <div class="title">
-        <h1>Ranchi Women's College</h1>
-        <p>Placement Cell Management System</p>
-    </div>
-    <div class="nav">
-        <a href="front.html">Home</a>
-        <a href="studentlogin.html">Student Login</a>
-        <a href="companylogin.html">Company Login</a>
-        <a href="registration.html">Registration</a>
-        <a href="adminlogin.html">Admin</a>
-        <a href="contact.html">Contact</a>
-    </div>
-</div>
 
 <div class="main">
 

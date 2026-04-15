@@ -143,7 +143,22 @@ tr:hover{
 td img{
     border-radius:6px;
 }
+/* ===== CONTENT AREA ===== */
+.content-area{
+    width:100%;
+    height:calc(100vh - 100px);  /* 🔥 full height minus topbar */
+    background:#fff;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    overflow:hidden;
+}
 
+/* IFRAME */
+.content-area iframe{
+    width:100%;
+    height:100%;
+    border:none;
+}
 /* BUTTON */
 .btn{
     padding:6px 12px;
@@ -166,30 +181,6 @@ td img{
 
 <body>
 
-<!-- HEADER -->
-<div class="header">
-
-<div class="header-left">
-    <div class="logo">
-        <img src="logo.jpg">
-    </div>
-
-    <div class="title">
-        <h1>Ranchi Women's College</h1>
-        <p>Placement Cell Management System</p>
-    </div>
-</div>
-
-<div class="nav">
-    <a href="front.html">Home</a>
-    <a href="studentlogin.html">Student Login</a>
-    <a href="companylogin.html">Company Login</a>
-    <a href="registration.html">Registration</a>
-    <a href="adminlogin.html">Admin</a>
-    <a href="contact.html">Contact</a>
-</div>
-
-</div>
 
 <!-- MAIN -->
 <div class="main">

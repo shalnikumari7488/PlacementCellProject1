@@ -77,15 +77,42 @@ table{
     border-collapse:collapse;
 }
 th, td{
-    padding:12px;
+    padding:10px;
     text-align:center;
     border-bottom:1px solid #ddd;
+    font-size:13px;
 }
 th{
     background:#2c2f5a;
     color:#fff;
 }
 tr:hover{background:#f5f5f5;}
+
+/* ===== BUTTONS ===== */
+.btn{
+    padding:6px 10px;
+    border:none;
+    border-radius:6px;
+    font-size:12px;
+    cursor:pointer;
+    color:#fff;
+}
+
+/* SELECT */
+.select{
+    background:#28c76f;
+}
+.select:hover{
+    background:#20a85a;
+}
+
+/* REJECT */
+.reject{
+    background:#ea5455;
+}
+.reject:hover{
+    background:#c73c3d;
+}
 </style>
 </head>
 
@@ -162,6 +189,7 @@ $sql = mysqli_query($conn,"select * from application where companyemail='$t1'");
     <th>Resume</th>
     <th>Apply Date</th>
     <th>Status</th>
+    <th>Action</th>
 </tr>
 
 <?php
@@ -179,6 +207,17 @@ while($di = mysqli_fetch_array($sql))
     </td>
     <td><?php echo $di[7]; ?></td>
     <td><?php echo $di[8]; ?></td>
+
+    <!-- ACTION BUTTON -->
+    <td>
+        <form method="post" action="update_status.php" style="display:flex; gap:5px; justify-content:center;">
+            <input type="hidden" name="applicationid" value="<?php echo $di[0]; ?>">
+
+            <button type="submit" name="status" value="Selected" class="btn select">Select</button>
+            <button type="submit" name="status" value="Rejected" class="btn reject">Reject</button>
+        </form>
+    </td>
+
 </tr>
 <?php } ?>
 </table>

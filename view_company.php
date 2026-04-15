@@ -104,27 +104,6 @@ tr:hover{
 
 <body>
 
-<!-- HEADER SAME -->
-<div class="header">
-    <div class="logo">
-        <img src="logo.jpg">
-    </div>
-
-    <div class="title">
-        <h1>Ranchi Women's College</h1>
-        <p>Placement Cell Management System</p>
-    </div>
-
-    <div class="nav">
-        <a href="frontpage.html">Home</a>
-        <a href="studentdashboard.php">Dashboard</a>
-        <a href="companylogin.html">Company Login</a>
-        <a href="registration.html">Registration</a>
-        <a href="adminlogin.html">Admin</a>
-        <a href="contact.html">Contact</a>
-    </div>
-</div>
-
 <!-- MAIN -->
 <div class="main">
 <div class="page-title">Available Companies</div>
@@ -193,7 +172,7 @@ function deleteCompany(companyemail){
         backdrop: 'rgba(0,0,0,0.6)'
     }).then((result) => {
         if(result.isConfirmed){
-            window.location = "deletecompany1.php?companyemail=" + companyemail;
+            window.location = "deletecompany1git .php?companyemail=" + companyemail;
         }
     });
 }
